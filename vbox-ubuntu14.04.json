@@ -1,0 +1,43 @@
+{
+  "builders": [
+  {
+    "type": "virtualbox-iso",
+    "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz",
+        " auto=true",
+        " priority=critical",
+        " initrd=/install/initrd.gz",
+        " preseed/url=http://192.168.5.50/ks/preseed.cfg",
+        " -- ",
+        "<enter>"
+      ],
+    "boot_wait": "10s",
+    "guest_os_type": "Ubuntu_64",
+    "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+      ],
+    "iso_url": "iso/ubuntu-14.04.3-server-amd64.iso",
+    "iso_checksum": "9e5fecc94b3925bededed0fdca1bd417",
+    "iso_checksum_type": "md5",
+    "ssh_username": "packer",
+    "ssh_password": "packer",
+    "ssh_port": 22,
+    "ssh_wait_timeout": "10000s",
+    "headless": false,
+    "http_directory": "http://192.168.5.50/ks/preseed.cfg",
+    "shutdown_command": "echo 'packer'|sudo -S shutdown -P now"
+  }
+  ],
+
+  "provisioners": [
+
+  ],
+
+  "post-processors": [
+
+  ]
+}
