@@ -9,9 +9,8 @@
 `$ packer build vbox-ubuntu14.04.json`  
 
 ## Note:  
-Currently have iso file copied locally into iso/ directory.  
-Ubuntu preseed file pulls from web server.  
+Builder looks for image in iso/ directory, otherwise downloads from web.  
+iso/ directory not included due to size.  
 
 #### TODO:  
 Add provisioners scripts.  
-Add preseed locally to repo.  
