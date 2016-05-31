@@ -13,5 +13,5 @@ Currently have iso file copied locally into iso/ directory.
 Ubuntu preseed file pulls from web server.  
 
 #### TODO:  
-Add provisioners scripts.
+Add provisioners scripts.  
 Add preseed locally to repo.  

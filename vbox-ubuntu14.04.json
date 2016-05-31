@@ -10,7 +10,7 @@
         " auto=true",
         " priority=critical",
         " initrd=/install/initrd.gz",
-        " preseed/url=http://192.168.5.50/ks/preseed.cfg",
+        " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
         " -- ",
         "<enter>"
       ],
@@ -20,7 +20,8 @@
         [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ],
-    "iso_url": "iso/ubuntu-14.04.3-server-amd64.iso",
+    "iso_urls": ["iso/ubuntu-14.04.3-server-amd64.iso",
+                "http://old-releases.ubuntu.com/releases/14.04.1/ubuntu-14.04.1-server-amd64.iso"],
     "iso_checksum": "9e5fecc94b3925bededed0fdca1bd417",
     "iso_checksum_type": "md5",
     "ssh_username": "packer",
@@ -28,7 +29,7 @@
     "ssh_port": 22,
     "ssh_wait_timeout": "10000s",
     "headless": false,
-    "http_directory": "http://192.168.5.50/ks/preseed.cfg",
+    "http_directory": "http",
     "shutdown_command": "echo 'packer'|sudo -S shutdown -P now"
   }
   ],
